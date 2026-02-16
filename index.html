@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Talha Tezcan | Seyyar PPF & Kaplama</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #030405;
+            font-family: 'Archivo', sans-serif;
+            color: #f0f4f8;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* hareketli neon arka plan - yeşil ton */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 50%, #0a2a1a 0%, #010101 80%);
+            z-index: -2;
+        }
+
+        /* karbon fiber doku (ince) - yeşil */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: repeating-linear-gradient(45deg, rgba(0, 255, 150, 0.02) 0px, rgba(0, 255, 150, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* hareketli ışık dalgası - yeşil */
+        .light-wave {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, transparent 30%, rgba(0, 255, 150, 0.03) 50%, transparent 70%);
+            background-size: 200% 200%;
+            animation: wave 12s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes wave {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* tipografi */
+        h1, h2, h3, .logo-font {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a0ffc0 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff9d, #00cc66);
+            border-radius: 4px;
+            box-shadow: 0 0 30px #00ff9d;
+        }
+
+        /* butonlar - yeşil */
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 255, 150, 0.1);
+            border: 1.5px solid #00ff9d;
+            color: #fff;
+            padding: 16px 44px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 60px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.3);
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-wa i {
+            font-size: 1.8rem;
+            color: #00ff9d;
+            filter: drop-shadow(0 0 8px #00ff9d);
+        }
+
+        .btn-wa:hover {
+            background: #00ff9d;
+            color: #010101;
+            border-color: #fff;
+            box-shadow: 0 0 45px #00ff9d, 0 0 90px #00cc66;
+            transform: scale(1.05);
+        }
+
+        .btn-wa:hover i {
+            color: #010101;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7fa0ad6?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: 50% 30%;
+            filter: brightness(0.25) contrast(1.2) saturate(1.3);
+            z-index: -2;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, #000 0%, transparent 50%, #000 100%);
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            animation: slideGlow 1.4s ease-out;
+        }
+
+        @keyframes slideGlow {
+            0% { opacity: 0; transform: translateX(-50px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff, #a0ffc0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px #00ff9d;
+        }
+
+        .hero .subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ccffd0;
+            margin: 20px 0 30px;
+            border-left: 6px solid #00ff9d;
+            padding-left: 25px;
+            background: linear-gradient(90deg, rgba(0, 255, 150, 0.2), transparent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* PROFİL KARTI - yeşil tema */
+        .profile-card {
+            background: rgba(5, 20, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border: 2px solid #00ff9d;
+            border-radius: 48px;
+            padding: 45px 35px;
+            box-shadow: 0 0 60px rgba(0, 255, 150, 0.5);
+            text-align: center;
+            transition: 0.4s;
+            animation: slideGlow 1.6s ease-out;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 90px #00ff9d;
+        }
+
+        .profile-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 0 0 20px #00ff9d;
+            margin-bottom: 15px;
+        }
+        .profile-name span {
+            display: block;
+            font-size: 2.8rem;
+            color: #a0ffc0;
+        }
+        .profile-service {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #a0ffc0;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 2px solid #00ff9d;
+            border-bottom: 2px solid #00ff9d;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .profile-phone {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 25px 0 20px;
+            color: #fff;
+            text-shadow: 0 0 20px #00ff9d;
+        }
+        .profile-phone a {
+            color: #00ff9d;
+            text-decoration: none;
+        }
+        .profile-phone i {
+            margin-right: 10px;
+            color: #00ff9d;
+        }
+        .profile-social {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 25px;
+            font-size: 2.5rem;
+        }
+        .profile-social a {
+            color: #00ff9d;
+            filter: drop-shadow(0 0 15px #00ff9d);
+            transition: 0.3s;
+        }
+        .profile-social a:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* HİZMETLER - yeşil vurgu */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: rgba(5, 20, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #1a4a3a;
+            border-radius: 28px;
+            padding: 30px 20px 35px;
+            text-align: center;
+            transition: 0.4s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1618843479313-40f0af7e4b8c?w=600&auto=format&fit=crop&q=60') center/cover;
+            opacity: 0.08;
+            z-index: -1;
+            transition: 0.4s;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.2;
+            transform: scale(1.1);
+        }
+
+        .service-card:hover {
+            border-color: #00ff9d;
+            box-shadow: 0 0 40px #00ff9d;
+            background: rgba(0, 40, 20, 0.8);
+        }
+
+        .service-icon {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            color: #00ff9d;
+            filter: drop-shadow(0 0 20px #00ff9d);
+        }
+
+        .service-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #a0ffc0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card p {
+            color: #acf0d0;
+            font-weight: 400;
+        }
+
+        /* PPF & SEYYAR - yeşil */
+        .ppf-mobile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .ppf-card {
+            background: rgba(0, 30, 15, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #0a6040;
+            border-radius: 40px;
+            padding: 50px 30px;
+            transition: 0.4s;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ppf-card:nth-child(1)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1600712242805-5e3b512c6f9d?w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+            transition: 0.5s;
+        }
+
+        .ppf-card:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+            transition: 0.5s;
+        }
+
+        .ppf-card:hover::before {
+            opacity: 0.25;
+            transform: scale(1.1);
+        }
+
+        .ppf-card:hover {
+            border-color: #00ff9d;
+            box-shadow: 0 0 60px #00ff9d;
+            transform: scale(1.02);
+        }
+
+        .ppf-icon {
+            font-size: 4rem;
+            color: #00ff9d;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px #00ff9d);
+        }
+
+        .ppf-card h3 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px #00ff9d;
+        }
+
+        .ppf-card ul {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .ppf-card li {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #d0ffd0;
+        }
+
+        .ppf-card li i {
+            color: #00ff9d;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* HAKKIMIZDA */
+        .about-card {
+            background: rgba(5, 20, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid #00c080;
+            border-radius: 48px;
+            padding: 60px;
+            border-left: 8px solid #00ff9d;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+        .about-card p {
+            font-size: 1.3rem;
+            color: #e0ffe0;
+            max-width: 900px;
+        }
+
+        /* İLETİŞİM */
+        .contact-card {
+            background: linear-gradient(125deg, #021610, #032418);
+            border-radius: 60px;
+            padding: 60px 30px;
+            text-align: center;
+            border: 2px solid #00ff9d;
+            box-shadow: 0 0 60px rgba(0, 255, 150, 0.5);
+        }
+
+        .contact-phone {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 25px 0;
+            color: #fff;
+            text-shadow: 0 0 20px #00ff9d;
+        }
+
+        .contact-phone i {
+            color: #00ff9d;
+            margin-right: 15px;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            border-top: 2px solid #00ff9d;
+            box-shadow: 0 -15px 40px rgba(0, 255, 150, 0.2);
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 60px 60px 0 0;
+            margin-top: 60px;
+        }
+
+        .footer .neon {
+            color: #00ff9d;
+            font-weight: 700;
+            text-shadow: 0 0 8px #00ff9d;
+        }
+
+        .footer-social {
+            margin-top: 15px;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            color: #00ff9d;
+            font-size: 1.8rem;
+        }
+        .footer-social a {
+            color: #00ff9d;
+        }
+
+        /* animasyonlar */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* responsive */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .ppf-mobile-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero .subtitle { font-size: 1.4rem; }
+            .btn-wa { padding: 12px 30px; }
+            .profile-name { font-size: 2.4rem; }
+            .profile-name span { font-size: 2rem; }
+            .profile-service { font-size: 1.4rem; }
+            .profile-phone { font-size: 1.8rem; }
+            .profile-social { font-size: 2rem; }
+            .about-card { padding: 30px; }
+            .contact-phone { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="light-wave"></div>
+    <div class="container">
+
+        <!-- HERO - PROFİL KARTI (yeşil) -->
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>MUHAMMED<br>TALHA TEZCAN</h1>
+                    <div class="subtitle">PPF & Araç Kaplama Uzmanı | Seyyar Hizmet</div>
+                    <a href="https://wa.me/905426502395?text=Merhaba%20Talha%20Bey,%20web%20üzerinden%20PPF%20kaplama%20ve%20seyyar%20hizmet%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp İletişim</a>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-name">
+                        MUHAMMED<br><span>TALHA TEZCAN</span>
+                    </div>
+                    <div class="profile-service">
+                        araç kaplama · cam filmi
+                    </div>
+                    <div class="profile-phone">
+                        <i class="fab fa-whatsapp"></i> <a href="https://wa.me/905426502395">542 650 23 95</a>
+                    </div>
+                    <div class="profile-social">
+                        <a href="https://tiktok.com/@talhatezcan0" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://youtube.com/@talhatezcan" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com/talhatezcan0" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HİZMETLER -->
+        <section class="fade-up" id="services">
+            <h2>HİZMETLERİMİZ</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>PPF & Koruma</h3>
+                    <p>Paint Protection Film, kendini yenileyen kaplama, taş dayanıklılığı.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-fill-drip"></i></div>
+                    <h3>Seramik Kaplama</h3>
+                    <p>9H sertlik, hidrofobik etki, uzun ömürlü parlaklık.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+                    <h3>Detaylı Bakım</h3>
+                    <p>Profesyonel iç-dış temizlik, pasta koruma, seramik dokunuş.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-truck-pickup"></i></div>
+                    <h3>Seyyar Uygulama</h3>
+                    <p>Aracınızın olduğu yerde profesyonel kaplama hizmeti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PPF & SEYYAR -->
+        <section class="fade-up" id="ppf-mobile">
+            <h2>PPF & MOBİL ÇÖZÜMLER</h2>
+            <div class="ppf-mobile-grid">
+                <div class="ppf-card">
+                    <div class="ppf-icon"><i class="fas fa-crown"></i></div>
+                    <h3>PPF Kaplama</h3>
+                    <p>Yüksek performanslı poliüretan film. Çizilmelere, darbelere ve kimyasallara karşı üstün koruma. Kendini yenileme özelliği ile aracınızı ilk günkü gibi tutar.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Tamamen şeffaf / mat seçenek</li>
+                        <li><i class="fas fa-check-circle"></i> UV ışınlarına %99 direnç</li>
+                        <li><i class="fas fa-check-circle"></i> Profesyonel uygulama, iz bırakmaz</li>
+                    </ul>
+                </div>
+                <div class="ppf-card">
+                    <div class="ppf-icon"><i class="fas fa-truck-moving"></i></div>
+                    <h3>Seyyar Detay & Kaplama</h3>
+                    <p>Size özel konfor: Donanımlı mobil aracımızla evinizde veya iş yerinizde profesyonel uygulama. Zamandan tasarruf edin, aracınızı teslim etme derdi olmadan kaplama keyfini yaşayın.</p>
+                    <ul>
+                        <li><i class="fas fa-map-pin"></i> İstanbul / Ankara / İzmir ve çevresi</li>
+                        <li><i class="fas fa-clock"></i> Hızlı servis, aynı gün teslim</li>
+                        <li><i class="fas fa-star"></i> Premium ekipman, tozsuz ortam</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HAKKIMIZDA -->
+        <section class="fade-up" id="about">
+            <h2>HAKKIMIZDA</h2>
+            <div class="about-card">
+                <p><strong>Muhammed Talha Tezcan</strong> liderliğindeki ekibimiz, PPF, seramik kaplama ve koruma çözümlerinde uzmanlaşmıştır. Sektörde 10+ yıllık deneyim, sürekli yenilenen teknik donanım ve seyyar hizmet anlayışımızla aracınızı en iyi şekilde koruyor ve görsel olarak üst seviyeye taşıyoruz. Müşteri memnuniyeti, işimizin merkezindedir. Her araca özel yaklaşım ve titiz işçilik sunuyoruz.</p>
+            </div>
+        </section>
+
+        <!-- İLETİŞİM -->
+        <section class="fade-up" id="contact">
+            <h2>İLETİŞİM</h2>
+            <div class="contact-card">
+                <i class="fas fa-phone-volume" style="font-size: 4rem; color: #00ff9d; margin-bottom: 20px;"></i>
+                <div class="contact-phone">
+                    <i class="fab fa-whatsapp"></i> +90 542 650 23 95
+                </div>
+                <p style="margin-bottom: 35px; color: #b0ffd0;">Seyyar ekiplerimiz 7/24 sorularınızı yanıtlar.</p>
+                <a href="https://wa.me/905426502395?text=Merhaba%20Talha%20Bey,%20seyyar%20PPF%20kaplama%20için%20randevu%20almak%20istiyorum." target="_blank" class="btn-wa" style="font-size: 1.7rem; padding: 20px 70px;"><i class="fab fa-whatsapp"></i> Hemen Yaz</a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2025 <span class="neon">MUHAMMED TALHA TEZCAN</span> | PPF & Seyyar Kaplama Uzmanı</p>
+            <div class="footer-social">
+                <a href="https://tiktok.com/@talhatezcan0" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@talhatezcan" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/talhatezcan0" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scroll Animasyon JS -->
+    <script>
+        (function() {
+            const faders = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px' });
+            faders.forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+</html>
