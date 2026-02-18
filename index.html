@@ -26,28 +26,38 @@
             color: #f0f4f8;
             line-height: 1.5;
             overflow-x: hidden;
+            position: relative;
+            padding-top: 80px; /* sabit menü için boşluk */
+        }
+
+        /* dekoratif araba silüetleri */
+        body::before {
+            content: "🚗";
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: #00ff9d;
+            transform: rotate(-10deg);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "🚙";
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            font-size: 5rem;
+            opacity: 0.08;
+            color: #00ff9d;
+            transform: rotate(15deg);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* hareketli neon arka plan - yeşil ton */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, #0a2a1a 0%, #010101 80%);
-            z-index: -2;
-        }
-
-        /* karbon fiber doku (ince) - yeşil */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: repeating-linear-gradient(45deg, rgba(0, 255, 150, 0.02) 0px, rgba(0, 255, 150, 0.02) 2px, transparent 2px, transparent 8px);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* hareketli ışık dalgası - yeşil */
         .light-wave {
             position: fixed;
             top: 0;
@@ -66,10 +76,108 @@
             100% { background-position: 200% 200%; }
         }
 
+        /* ========== SABİT MENÜ ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 20, 10, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid #00ff9d;
+            box-shadow: 0 0 30px rgba(0, 255, 150, 0.3);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 15px #00ff9d;
+        }
+        .nav-logo span {
+            color: #00ff9d;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .nav-menu li a:hover {
+            color: #00ff9d;
+            border-bottom-color: #00ff9d;
+            text-shadow: 0 0 10px #00ff9d;
+        }
+
+        /* mobil menü */
+        .nav-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #00ff9d;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 20, 10, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 30px 0;
+                border-bottom: 2px solid #00ff9d;
+                transition: 0.4s;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            .nav-menu li a {
+                display: block;
+                font-size: 1.5rem;
+                border-bottom: none;
+            }
+            .nav-toggle {
+                display: block;
+            }
+        }
+
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 30px;
+            position: relative;
+            z-index: 1;
         }
 
         /* tipografi */
@@ -300,20 +408,54 @@
             overflow: hidden;
         }
 
-        .service-card::before {
+        /* PPF & Koruma kartına yeni resim eklendi (kaput koruma) */
+        .service-card:nth-child(1)::before {
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1618843479313-40f0af7e4b8c?w=600&auto=format&fit=crop&q=60') center/cover;
-            opacity: 0.08;
+            background: url('https://images.unsplash.com/photo-1632949196136-8b6e6c5a4d5c?q=80&w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+            transition: 0.4s;
+        }
+        .service-card:nth-child(2)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1607863680198-23d4b1a1b7d2?q=80&w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+            transition: 0.4s;
+        }
+        .service-card:nth-child(3)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+            transition: 0.4s;
+        }
+        .service-card:nth-child(4)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1618843479313-40f0af7e4b8c?q=80&w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.2;
             z-index: -1;
             transition: 0.4s;
         }
 
         .service-card:hover::before {
-            opacity: 0.2;
+            opacity: 0.35;
             transform: scale(1.1);
         }
 
@@ -328,6 +470,8 @@
             margin-bottom: 20px;
             color: #00ff9d;
             filter: drop-shadow(0 0 20px #00ff9d);
+            position: relative;
+            z-index: 1;
         }
 
         .service-card h3 {
@@ -336,14 +480,18 @@
             background: linear-gradient(135deg, #fff, #a0ffc0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card p {
             color: #acf0d0;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
-        /* PPF & SEYYAR - yeşil */
+        /* PPF & SEYYAR */
         .ppf-mobile-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -366,8 +514,8 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1600712242805-5e3b512c6f9d?w=600&auto=format&fit=crop') center/cover;
-            opacity: 0.1;
+            background: url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=600&auto=format&fit=crop') center/cover;
+            opacity: 0.18;
             z-index: -1;
             transition: 0.5s;
         }
@@ -377,13 +525,13 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&auto=format&fit=crop') center/cover;
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: -1;
             transition: 0.5s;
         }
 
         .ppf-card:hover::before {
-            opacity: 0.25;
+            opacity: 0.3;
             transform: scale(1.1);
         }
 
@@ -398,6 +546,8 @@
             color: #00ff9d;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 20px #00ff9d);
+            position: relative;
+            z-index: 1;
         }
 
         .ppf-card h3 {
@@ -405,11 +555,15 @@
             margin-bottom: 20px;
             color: #fff;
             text-shadow: 0 0 10px #00ff9d;
+            position: relative;
+            z-index: 1;
         }
 
         .ppf-card ul {
             list-style: none;
             margin-top: 25px;
+            position: relative;
+            z-index: 1;
         }
 
         .ppf-card li {
@@ -426,6 +580,33 @@
             font-size: 1.5rem;
             width: 30px;
             text-align: center;
+        }
+
+        /* video butonu */
+        .video-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: rgba(0, 255, 150, 0.15);
+            border: 1px solid #00ff9d;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .video-link i {
+            margin-right: 8px;
+            color: #00ff9d;
+        }
+        .video-link:hover {
+            background: #00ff9d;
+            color: #000;
+            box-shadow: 0 0 30px #00ff9d;
+        }
+        .video-link:hover i {
+            color: #000;
         }
 
         /* HAKKIMIZDA */
@@ -526,6 +707,12 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding-top: 70px;
+            }
+            body::before, body::after {
+                display: none;
+            }
             .hero h1 { font-size: 2.8rem; }
             .hero .subtitle { font-size: 1.4rem; }
             .btn-wa { padding: 12px 30px; }
@@ -541,9 +728,25 @@
 </head>
 <body>
     <div class="light-wave"></div>
-    <div class="container">
 
-        <!-- HERO - PROFİL KARTI (yeşil) -->
+    <!-- Sabit Menü -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">MT<span>TEZCAN</span></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#services">HİZMETLERİMİZ</a></li>
+                <li><a href="#ppf-mobile">PPF & MOBİL</a></li>
+                <li><a href="#about">HAKKIMIZDA</a></li>
+                <li><a href="#contact">İLETİŞİM</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HERO - PROFİL KARTI -->
         <section class="hero" id="home">
             <div class="hero-bg"></div>
             <div class="hero-grid">
@@ -571,7 +774,7 @@
             </div>
         </section>
 
-        <!-- HİZMETLER -->
+        <!-- HİZMETLERİMİZ -->
         <section class="fade-up" id="services">
             <h2>HİZMETLERİMİZ</h2>
             <div class="services-grid">
@@ -598,7 +801,7 @@
             </div>
         </section>
 
-        <!-- PPF & SEYYAR -->
+        <!-- PPF & MOBİL ÇÖZÜMLER -->
         <section class="fade-up" id="ppf-mobile">
             <h2>PPF & MOBİL ÇÖZÜMLER</h2>
             <div class="ppf-mobile-grid">
@@ -611,13 +814,15 @@
                         <li><i class="fas fa-check-circle"></i> UV ışınlarına %99 direnç</li>
                         <li><i class="fas fa-check-circle"></i> Profesyonel uygulama, iz bırakmaz</li>
                     </ul>
+                    <a href="https://drive.google.com/file/d/1K70NTUKOy9akHP8mWjq-GAMb5WKJUym6/view?usp=sharing" target="_blank" class="video-link"><i class="fas fa-play-circle"></i> Uygulama Videosu</a>
+                    <p style="margin-top: 15px; color: #a0ffc0; font-size: 1rem;">PPF uygulama sürecini adım adım izleyin.</p>
                 </div>
                 <div class="ppf-card">
                     <div class="ppf-icon"><i class="fas fa-truck-moving"></i></div>
                     <h3>Seyyar Detay & Kaplama</h3>
-                    <p>Size özel konfor: Donanımlı mobil aracımızla evinizde veya iş yerinizde profesyonel uygulama. Zamandan tasarruf edin, aracınızı teslim etme derdi olmadan kaplama keyfini yaşayın.</p>
+                    <p>Size özel konfor: Donanımlı mobil aracımızla Türkiye'nin her yerinde profesyonel uygulama. Zamandan tasarruf edin, aracınızı teslim etme derdi olmadan kaplama keyfini yaşayın.</p>
                     <ul>
-                        <li><i class="fas fa-map-pin"></i> İstanbul / Ankara / İzmir ve çevresi</li>
+                        <li><i class="fas fa-map-pin"></i> Tüm illere seyyar hizmet</li>
                         <li><i class="fas fa-clock"></i> Hızlı servis, aynı gün teslim</li>
                         <li><i class="fas fa-star"></i> Premium ekipman, tozsuz ortam</li>
                     </ul>
@@ -657,9 +862,10 @@
         </footer>
     </div>
 
-    <!-- Scroll Animasyon JS -->
+    <!-- Menü Toggle ve Scroll Animasyon JS -->
     <script>
         (function() {
+            // Fade-up animasyonları
             const faders = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -669,6 +875,24 @@
                 });
             }, { threshold: 0.2, rootMargin: '0px' });
             faders.forEach(el => observer.observe(el));
+
+            // Mobil menü toggle
+            const toggleBtn = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Menü linklerine tıklayınca menüyü kapat (mobilde)
+            const navLinks = document.querySelectorAll('.nav-menu li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
         })();
     </script>
 </body>
