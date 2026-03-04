@@ -57,7 +57,7 @@
             pointer-events: none;
         }
 
-        /* hareketli neon arka plan - yeşil ton */
+        /* hareketli neon arka plan */
         .light-wave {
             position: fixed;
             top: 0;
@@ -87,7 +87,7 @@
             border-bottom: 2px solid #00ff9d;
             box-shadow: 0 0 30px rgba(0, 255, 150, 0.3);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 10px 0;
         }
 
         .nav-container {
@@ -99,14 +99,15 @@
             align-items: center;
         }
 
-        .nav-logo {
+        .nav-logo a {
             font-family: 'Syne', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
             color: #fff;
+            text-decoration: none;
             text-shadow: 0 0 15px #00ff9d;
         }
-        .nav-logo span {
+        .nav-logo a span {
             color: #00ff9d;
         }
 
@@ -312,7 +313,7 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* PROFİL KARTI - yeşil tema */
+        /* PROFİL KARTI - resim eklendi */
         .profile-card {
             background: rgba(5, 20, 10, 0.8);
             backdrop-filter: blur(15px);
@@ -328,6 +329,21 @@
         .profile-card:hover {
             transform: scale(1.02);
             box-shadow: 0 0 90px #00ff9d;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid #00ff9d;
+            box-shadow: 0 0 30px #00ff9d;
+        }
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .profile-name {
@@ -387,7 +403,7 @@
             transform: scale(1.2);
         }
 
-        /* HİZMETLER - yeşil vurgu */
+        /* HİZMETLER */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -408,7 +424,6 @@
             overflow: hidden;
         }
 
-        /* HİZMETLER kartları için arka plan görselleri - GÜNCELLENDİ */
         .service-card:nth-child(1)::before {
             content: '';
             position: absolute;
@@ -524,7 +539,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://i.postimg.cc/X7GZCpcx/Chat-GPT-Image-4-Mar-2026-09-24-08.png') center/cover;
+            background: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&auto=format&fit=crop') center/cover;
             opacity: 0.15;
             z-index: -1;
             transition: 0.5s;
@@ -582,7 +597,6 @@
             text-align: center;
         }
 
-        /* video butonu */
         .video-link {
             display: inline-block;
             margin-top: 25px;
@@ -609,28 +623,6 @@
             color: #000;
         }
 
-        /* EKSTRA RESİM - sayfanın herhangi bir yerine (sağ alt köşe) */
-        .extra-image {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: auto;
-            border-radius: 15px;
-            border: 2px solid #00ff9d;
-            box-shadow: 0 0 30px #00ff9d;
-            z-index: 100;
-            opacity: 0.8;
-            transition: 0.3s;
-            pointer-events: none; /* tıklanmasın, sadece dekor */
-        }
-        .extra-image:hover {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 0 50px #00ff9d;
-        }
-
-        /* HAKKIMIZDA */
         .about-card {
             background: rgba(5, 20, 10, 0.7);
             backdrop-filter: blur(15px);
@@ -647,7 +639,6 @@
             max-width: 900px;
         }
 
-        /* İLETİŞİM */
         .contact-card {
             background: linear-gradient(125deg, #021610, #032418);
             border-radius: 60px;
@@ -670,7 +661,6 @@
             margin-right: 15px;
         }
 
-        /* FOOTER */
         .footer {
             padding: 40px 0;
             border-top: 2px solid #00ff9d;
@@ -700,7 +690,6 @@
             color: #00ff9d;
         }
 
-        /* animasyonlar */
         .fade-up {
             opacity: 0;
             transform: translateY(50px);
@@ -712,7 +701,6 @@
             transform: translateY(0);
         }
 
-        /* responsive */
         @media (max-width: 1024px) {
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -737,6 +725,10 @@
             .hero h1 { font-size: 2.8rem; }
             .hero .subtitle { font-size: 1.4rem; }
             .btn-wa { padding: 12px 30px; }
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
             .profile-name { font-size: 2.4rem; }
             .profile-name span { font-size: 2rem; }
             .profile-service { font-size: 1.4rem; }
@@ -744,21 +736,17 @@
             .profile-social { font-size: 2rem; }
             .about-card { padding: 30px; }
             .contact-phone { font-size: 1.8rem; }
-            .extra-image {
-                width: 60px;
-                bottom: 10px;
-                right: 10px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="light-wave"></div>
 
-    <!-- Sabit Menü -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">MT<span>TEZCAN</span></div>
+            <div class="nav-logo">
+                <a href="#home">MT<span>TEZCAN</span></a>
+            </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#services">HİZMETLERİMİZ</a></li>
                 <li><a href="#ppf-mobile">PPF & MOBİL</a></li>
@@ -771,11 +759,7 @@
         </div>
     </nav>
 
-    <!-- Ekstra resim (sağ alt köşede) -->
-    <img src="https://postimg.cc/K32KsPL1" alt="Extra" class="extra-image">
-
     <div class="container">
-        <!-- HERO - PROFİL KARTI -->
         <section class="hero" id="home">
             <div class="hero-bg"></div>
             <div class="hero-grid">
@@ -785,6 +769,10 @@
                     <a href="https://wa.me/905426502395?text=Merhaba%20Talha%20Bey,%20web%20üzerinden%20PPF%20kaplama%20ve%20seyyar%20hizmet%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp İletişim</a>
                 </div>
                 <div class="profile-card">
+                    <!-- İşte kırmızı çizdiğiniz yere resim -->
+                    <div class="profile-img">
+                        <img src="https://i.postimg.cc/D0Wq05wP/Chat-GPT-Image-4-Mar-2026-09-30-40.png" alt="Talha Tezcan">
+                    </div>
                     <div class="profile-name">
                         MUHAMMED<br><span>TALHA TEZCAN</span>
                     </div>
@@ -803,7 +791,6 @@
             </div>
         </section>
 
-        <!-- HİZMETLERİMİZ -->
         <section class="fade-up" id="services">
             <h2>HİZMETLERİMİZ</h2>
             <div class="services-grid">
@@ -830,7 +817,6 @@
             </div>
         </section>
 
-        <!-- PPF & MOBİL ÇÖZÜMLER -->
         <section class="fade-up" id="ppf-mobile">
             <h2>PPF & MOBİL ÇÖZÜMLER</h2>
             <div class="ppf-mobile-grid">
@@ -859,7 +845,6 @@
             </div>
         </section>
 
-        <!-- HAKKIMIZDA -->
         <section class="fade-up" id="about">
             <h2>HAKKIMIZDA</h2>
             <div class="about-card">
@@ -867,7 +852,6 @@
             </div>
         </section>
 
-        <!-- İLETİŞİM -->
         <section class="fade-up" id="contact">
             <h2>İLETİŞİM</h2>
             <div class="contact-card">
@@ -880,7 +864,6 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer class="footer">
             <p>© 2025 <span class="neon">MUHAMMED TALHA TEZCAN</span> | PPF & Seyyar Kaplama Uzmanı</p>
             <div class="footer-social">
@@ -891,10 +874,8 @@
         </footer>
     </div>
 
-    <!-- Menü Toggle ve Scroll Animasyon JS -->
     <script>
         (function() {
-            // Fade-up animasyonları
             const faders = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -905,7 +886,6 @@
             }, { threshold: 0.2, rootMargin: '0px' });
             faders.forEach(el => observer.observe(el));
 
-            // Mobil menü toggle
             const toggleBtn = document.getElementById('nav-toggle');
             const navMenu = document.getElementById('nav-menu');
             
@@ -915,7 +895,6 @@
                 });
             }
 
-            // Menü linklerine tıklayınca menüyü kapat (mobilde)
             const navLinks = document.querySelectorAll('.nav-menu li a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
